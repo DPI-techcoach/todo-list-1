@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      List #<%= @the_list.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/lists">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_list/<%= @the_list.id %>">
+          Delete list
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_list.status %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_list.description %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_list.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_list.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_list.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit list
+    </h2>
+
+    <form action="/modify_list/<%= @the_list.id %>"  method="post" >
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_list.status %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_list.description %></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_list.user_id %>">
+      </div>
+
+      <button>
+        Update list
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
